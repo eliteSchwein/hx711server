@@ -54,7 +54,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes('[{"id":"1","value":"'+str(val1)+'"},{"id":"2","value":"'+str(val2)+'"}]', "utf-8"))
      
 webServer = HTTPServer(('', serverPort), MyServer)
-threading.Thread(target=webServer.serve_forever()).start()
+threading.Thread(webServer.serve_forever()).start()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
