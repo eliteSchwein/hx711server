@@ -20,12 +20,11 @@ def runScale1():
     hx1.set_reference_unit(referenceUnit)
     hx1.reset()
     while True:
-        try:
-            val1 = hx1.get_weight(5)
+        val1 = hx1.get_weight(5)
 
-            hx1.power_down()
-            hx1.power_up()
-            time.sleep(0.5)
+        hx1.power_down()
+        hx1.power_up()
+        time.sleep(0.5)
 
 def runScale2():
     hx2 = HX711(19, 26)
@@ -33,12 +32,11 @@ def runScale2():
     hx2.set_reference_unit(referenceUnit)
     hx2.reset()
     while True:
-        try:
-            val2 = hx2.get_weight(5)
+        val2 = hx2.get_weight(5)
 
-            hx2.power_down()
-            hx2.power_up()
-            time.sleep(0.5)
+        hx2.power_down()
+        hx2.power_up()
+        time.sleep(0.5)
 
 def cleanAndExit():
     print("Cleaning...")
