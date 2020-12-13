@@ -35,7 +35,7 @@ print("Startup done.")
 
 val1 = 0
 val2 = 0
-hostName = "192.168.178.71"
+
 serverPort = 8081
 
 class MyServer(BaseHTTPRequestHandler):
@@ -50,8 +50,8 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes("</body></html>", "utf-8"))
 
 if __name__ == "__main__":        
-    webServer = HTTPServer((hostName, serverPort), MyServer)
-    print("Server started http://%s:%s" % (hostName, serverPort))
+    webServer = HTTPServer(('', serverPort), MyServer)
+    print("Server started")
 
     try:
         webServer.serve_forever()
