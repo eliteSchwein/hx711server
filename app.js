@@ -1,6 +1,6 @@
 var express = require('express');
 var cors = require('cors');
-const hx711 = require('/hx711');
+const hx711 = require('hx711');
 
 const PORT = 8081;
 
