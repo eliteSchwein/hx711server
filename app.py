@@ -16,6 +16,9 @@ def cleanAndExit():
         
     GPIO.cleanup()
         
+    print("Stop Webservice.")
+    webServer.server_close()
+    
     print("Bye!")
     sys.exit()
 
@@ -37,7 +40,7 @@ hx1.set_reference_unit(referenceUnit)
 hx1.reset()
 #hx2.reset()
 
-print("Startup done.")
+print("Scale Startup done.")
 
 val1 = 0
 val2 = 0
@@ -45,19 +48,14 @@ val2 = 0
 serverPort = 8081
 
 class MyServer(BaseHTTPRequestHandler):
-    print("Test")
     def do_GET(self):
         self.send_response(200)
-        self.send_header("Content-type", "text/html")
+        self.send_header("Content-type", "application/json")
         self.end_headers()
-        self.wfile.write(bytes("<html><head><title>https://pythonbasics.org</title></head>", "utf-8"))
-        self.wfile.write(bytes("<p>Request</p>", "utf-8"))
-        self.wfile.write(bytes("<body>", "utf-8"))
-        self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
+        self.wfile.write(bytes('[{"id":"1","value":"'+val1+'"},{"id":"2","value":"'+val2+'"}]', "utf-8"))
      
 webServer = HTTPServer(('', serverPort), MyServer)
-print("Server started")
+print("Server started on Port "+serverPort)
 
 webServer.serve_forever()
 
@@ -75,5 +73,3 @@ while True:
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
-        webServer.server_close()
-        print("Server stopped.")
