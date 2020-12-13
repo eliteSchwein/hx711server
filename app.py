@@ -67,7 +67,7 @@ while True:
         hx1.power_up()
         hx2.power_down()
         hx2.power_up()
-        time.sleep(0.1)
+        time.sleep(0.5)
         
 
     except (KeyboardInterrupt, SystemExit):
