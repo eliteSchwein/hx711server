@@ -2,16 +2,13 @@
    
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
-
-import time
 import sys
+import threading
 
 referenceUnit = 1
 
 import RPi.GPIO as GPIO
 from hx711 import HX711
-
-webserveronline = False
 
 def cleanAndExit():
     print("Cleaning...")
@@ -57,12 +54,10 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes('[{"id":"1","value":"'+str(val1)+'"},{"id":"2","value":"'+str(val2)+'"}]', "utf-8"))
      
 webServer = HTTPServer(('', serverPort), MyServer)
+threading.Thread(target=webServer.serve_forever()).start()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
-        if(webserveronline==False):
-            webserveronline=True
-            webServer.serve_forever()
         val1 = hx1.get_weight(5)
         print(str(val1))
         #va2 = hx2.get_weight(5)
