@@ -20,7 +20,6 @@ def runScale1():
     hx1.set_reference_unit(referenceUnit)
     hx1.reset()
     time.sleep(1)
-    print(HX711)
     while True:
         val1 = hx1.get_weight(5)
 
@@ -83,14 +82,7 @@ webserverthread.start()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
-        val1 = hx1.get_weight(5)
-        va2 = hx2.get_weight(5)
-
-        hx1.power_down()
-        hx1.power_up()
-        hx2.power_down()
-        hx2.power_up()
-        time.sleep(0.5)
+        print(val1)
         
 
     except (KeyboardInterrupt, SystemExit):
