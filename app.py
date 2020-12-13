@@ -22,7 +22,7 @@ httpd.serve_forever()
 body = '<div class=cell button>'
 body += ' <img src=./icons/NE.png onclick=image(this) />'
 body += '<h3> NE</h3>'
-body += '</div>
+body += '</div>'
 
 def cleanAndExit():
     print("Cleaning...")
