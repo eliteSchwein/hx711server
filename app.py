@@ -35,7 +35,7 @@ print("Startup done.")
 
 val1 = 0
 val2 = 0
-hostName = ""
+hostName = "raspberrypi"
 serverPort = 8081
 
 class MyServer(BaseHTTPRequestHandler):
