@@ -22,17 +22,20 @@ def cleanAndExit():
 GPIO.cleanup()
 GPIO.setwarnings(False)
 
+
+print("Setting Scales up!")
+
 hx1 = HX711(20, 21)
-hx2 = HX711(19, 25)
+#hx2 = HX711(19, 26)
 
 hx1.set_reading_format("MSB", "MSB")
-hx2.set_reading_format("MSB", "MSB")
+#hx2.set_reading_format("MSB", "MSB")
 
 hx1.set_reference_unit(referenceUnit)
-hx2.set_reference_unit(referenceUnit)
+#hx2.set_reference_unit(referenceUnit)
 
 hx1.reset()
-hx2.reset()
+#hx2.reset()
 
 print("Startup done.")
 
@@ -67,10 +70,10 @@ if __name__ == "__main__":
 while True:
     try:
         va1 = hx1.get_weight(5)
-        va2 = hx2.get_weight(5)
+        #va2 = hx2.get_weight(5)
 
         hx1.power_down()
-        hx2.power_up()
+        #hx2.power_up()
         time.sleep(0.1)
 
     except (KeyboardInterrupt, SystemExit):
