@@ -63,12 +63,12 @@ print("Setting Scales up!")
 hx1thread = threading.Thread(target=runScale1,args=())
 hx1thread.daemon
 hx1thread.start()
-hx1thread.join(10)
+hx1thread.join(2)
 
 hx2thread = threading.Thread(target=runScale2,args=())
 hx2thread.daemon
 hx2thread.start()
-hx2thread.join(10)
+hx2thread.join(2)
 
 print("Scale Startup done.")
 
