@@ -60,7 +60,7 @@ webserverthread.start()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
-        val1 = hx1.get_weight(5)
+        val1 = hx1.get_weight(1)
         print(str(val1))
         #va2 = hx2.get_weight(5)
 
