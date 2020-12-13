@@ -18,7 +18,7 @@ def cleanAndExit():
         
     print("Stop Webservice.")
     webServer.server_close()
-    
+
     print("Bye!")
     sys.exit()
 
@@ -55,7 +55,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes('[{"id":"1","value":"'+val1+'"},{"id":"2","value":"'+val2+'"}]', "utf-8"))
      
 webServer = HTTPServer(('', serverPort), MyServer)
-print("Server started on Port "+serverPort)
+print("Server started!")
 
 webServer.serve_forever()
 
