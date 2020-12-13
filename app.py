@@ -11,14 +11,6 @@ referenceUnit = 1
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
-def cleanAndExit():
-    print("Cleaning...")
-        
-    GPIO.cleanup()
-        
-    print("Bye!")
-    sys.exit()
-
 hx1 = HX711(20, 21)
 hx2 = HX711(19, 25)
 
@@ -38,6 +30,28 @@ val2 = 0
 
 serverPort = 8081
 
+class MyServer(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(bytes("<html><head><title>https://pythonbasics.org</title></head>", "utf-8"))
+        self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
+        self.wfile.write(bytes("<body>", "utf-8"))
+        self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
+        self.wfile.write(bytes("</body></html>", "utf-8"))
+
+if __name__ == "__main__":        
+    webServer = HTTPServer(('', serverPort), MyServer)
+    print("Server started")
+
+    try:
+        webServer.serve_forever()
+    except KeyboardInterrupt:
+        pass
+
+    webServer.server_close()
+    print("Server stopped.")
 
 while True:
     try:
