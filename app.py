@@ -52,10 +52,10 @@ class MyServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "application/json")
         self.end_headers()
-        self.wfile.write(bytes('[{"id":"1","value":"'+val1+'"},{"id":"2","value":"'+val2+'"}]', "utf-8"))
+        self.wfile.write(bytes('[{"id":"1","value":"'+str(val1)+'"},{"id":"2","value":"'+str(val2)+'"}]', "utf-8"))
      
 webServer = HTTPServer(('', serverPort), MyServer)
-print("Server started!")
+print("Server started! Port: "+str(serverPort))
 
 webServer.serve_forever()
 
