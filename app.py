@@ -64,6 +64,7 @@ webServer.serve_forever()
 while True:
     try:
         val1 = hx1.get_weight(5)
+        print(str(val1))
         #va2 = hx2.get_weight(5)
 
         hx1.power_down()
