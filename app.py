@@ -14,6 +14,9 @@ serverPort = 8081
 val1 = 0
 val2 = 0
 
+hx1 = ""
+hx2 = ""
+
 def runScale1():
     hx1 = HX711(20, 21)
     hx1.set_reading_format("MSB", "MSB")
