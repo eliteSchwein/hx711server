@@ -7,7 +7,8 @@ import threading
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
-referenceUnit = 1
+referenceUnitScale1 = 1
+referenceUnitScale2 = 1
 
 serverPort = 8081
 
@@ -16,9 +17,10 @@ val2 = 0
 
 def runScale1():
     global val1
+    global referenceUnitScale1
     hx1 = HX711(20, 21)
     hx1.set_reading_format("MSB", "MSB")
-    hx1.set_reference_unit(referenceUnit)
+    hx1.set_reference_unit(referenceUnitScale1)
     hx1.reset()
     time.sleep(1)
     while True:
@@ -31,9 +33,10 @@ def runScale1():
 
 def runScale2():
     global val2
+    global referenceUnitScale2
     hx2 = HX711(19, 26)
     hx2.set_reading_format("MSB", "MSB")
-    hx2.set_reference_unit(referenceUnit)
+    hx2.set_reference_unit(referenceUnitScale2)
     hx2.reset()
     time.sleep(1)
     while True:
