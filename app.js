@@ -1,14 +1,14 @@
 var express = require('express');
 var cors = require('cors');
-var hx711 = require('@ataberkylmz/hx711');
+var hx711 = require('@shroudedcode/hx711');
 
 const PORT = 8081;
 
 var scalevalue1 = 0;
 var scalevalue2 = 0;
 
-const sensor1 = new hx711(29, 28);
-const sensor2 = new hx711(25, 24);
+const sensor1 = new hx711(21, 20);
+const sensor2 = new hx711(26, 19);
 var app = express();
 app.use(cors());
 
