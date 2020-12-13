@@ -14,14 +14,12 @@ serverPort = 8081
 val1 = 0
 val2 = 0
 
-hx1
-hx2
-
 def runScale1():
     hx1 = HX711(20, 21)
     hx1.set_reading_format("MSB", "MSB")
     hx1.set_reference_unit(referenceUnit)
     hx1.reset()
+    time.sleep(1)
     while True:
         val1 = hx1.get_weight(5)
 
@@ -34,6 +32,7 @@ def runScale2():
     hx2.set_reading_format("MSB", "MSB")
     hx2.set_reference_unit(referenceUnit)
     hx2.reset()
+    time.sleep(1)
     while True:
         val2 = hx2.get_weight(5)
 
