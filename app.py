@@ -15,6 +15,7 @@ val1 = 0
 val2 = 0
 
 def runScale1():
+    global val1
     hx1 = HX711(20, 21)
     hx1.set_reading_format("MSB", "MSB")
     hx1.set_reference_unit(referenceUnit)
@@ -29,6 +30,7 @@ def runScale1():
         print("Scale1: "+str(val1))
 
 def runScale2():
+    global val2
     hx2 = HX711(19, 26)
     hx2.set_reading_format("MSB", "MSB")
     hx2.set_reference_unit(referenceUnit)
