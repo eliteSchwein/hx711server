@@ -14,8 +14,8 @@ serverPort = 8081
 val1 = 0
 val2 = 0
 
-hx1 = ""
-hx2 = ""
+hx1 = HX711
+hx2 = HX711
 
 def runScale1():
     hx1 = HX711(20, 21)
