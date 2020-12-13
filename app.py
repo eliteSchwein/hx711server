@@ -56,11 +56,6 @@ class MyServer(BaseHTTPRequestHandler):
      
 webServer = HTTPServer(('', serverPort), MyServer)
 print("Server started! Port: "+str(serverPort))
-
-webServer.serve_forever()
-
-
-
 while True:
     try:
         val1 = hx1.get_weight(5)
@@ -76,3 +71,8 @@ while True:
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
+webServer.serve_forever()
+
+
+
+
