@@ -26,6 +26,7 @@ def runScale1():
         hx1.power_down()
         hx1.power_up()
         time.sleep(0.5)
+        print("Scale1: "+str(val1))
 
 def runScale2():
     hx2 = HX711(19, 26)
@@ -39,6 +40,7 @@ def runScale2():
         hx2.power_down()
         hx2.power_up()
         time.sleep(0.5)
+        print("Scale2: "+str(val2))
 
 def cleanAndExit():
     print("Cleaning...")
@@ -82,7 +84,8 @@ webserverthread.start()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
-        print(val1)
+        print("Heartbeat!")
+        time.sleep(10)
         
 
     except (KeyboardInterrupt, SystemExit):
