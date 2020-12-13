@@ -20,6 +20,7 @@ def runScale1():
     hx1.set_reference_unit(referenceUnit)
     hx1.reset()
     time.sleep(1)
+    print(HX711)
     while True:
         val1 = hx1.get_weight(5)
 
