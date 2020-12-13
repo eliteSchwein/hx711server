@@ -11,6 +11,17 @@ referenceUnit = 1
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
+def cleanAndExit():
+    print("Cleaning...")
+        
+    GPIO.cleanup()
+        
+    print("Bye!")
+    sys.exit()
+
+GPIO.cleanup()
+GPIO.setwarnings(False)
+
 hx1 = HX711(20, 21)
 hx2 = HX711(19, 25)
 
