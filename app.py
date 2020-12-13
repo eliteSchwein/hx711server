@@ -1,10 +1,8 @@
 #!/usr/bin/python2
    
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
-import sys
+import SimpleHTTPServer
+import SocketServer
 
-hostName = "localhost"
 serverPort = 8081
 
 referenceUnit = 1
@@ -12,28 +10,19 @@ referenceUnit = 1
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
-class MyServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("<html><head><title>https://pythonbasics.org</title></head>", "utf-8"))
-        self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
-        self.wfile.write(bytes("<body>", "utf-8"))
-        self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
+appname = "App1"
 
-if __name__ == "__main__":        
-    webServer = HTTPServer((hostName, serverPort), MyServer)
-    print("Server started http://%s:%s" % (hostName, serverPort))
+Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 
-    try:
-        webServer.serve_forever()
-    except KeyboardInterrupt:
-        pass
+httpd = SocketServer.TCPServer(("", PORT), Handler)
 
-    webServer.server_close()
-    print("Server stopped.")
+print "serving at port", PORT
+httpd.serve_forever()
+
+body = '<div class=cell button>'
+body += ' <img src=./icons/'+ print appname +'.png onclick=image(this) />'
+body += '<h3>'.+ print appname +'</h3>'
+body += '</div>
 
 def cleanAndExit():
     print("Cleaning...")
