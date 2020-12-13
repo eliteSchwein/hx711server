@@ -45,6 +45,7 @@ val2 = 0
 serverPort = 8081
 
 class MyServer(BaseHTTPRequestHandler):
+    print("Test")
     def do_GET(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -64,7 +65,7 @@ webServer.serve_forever()
 
 while True:
     try:
-        va1 = hx1.get_weight(5)
+        val1 = hx1.get_weight(5)
         #va2 = hx2.get_weight(5)
 
         hx1.power_down()
