@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "@ataberkylmz/hx711": "~0.1.5",
+    "@shroudedcode/hx711": "~0.0.4",
     "express": "~4.17.1"
   },
   "repository": {
