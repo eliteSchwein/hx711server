@@ -20,8 +20,8 @@ print "serving at port", PORT
 httpd.serve_forever()
 
 body = '<div class=cell button>'
-body += ' <img src=./icons/'+ print appname +'.png onclick=image(this) />'
-body += '<h3>'.+ print appname +'</h3>'
+body += ' <img src=./icons/NE.png onclick=image(this) />'
+body += '<h3> NE</h3>'
 body += '</div>
 
 def cleanAndExit():
