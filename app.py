@@ -27,16 +27,16 @@ GPIO.setwarnings(False)
 print("Setting Scales up!")
 
 hx1 = HX711(20, 21)
-#hx2 = HX711(19, 26)
+hx2 = HX711(19, 26)
 
 hx1.set_reading_format("MSB", "MSB")
-#hx2.set_reading_format("MSB", "MSB")
+hx2.set_reading_format("MSB", "MSB")
 
 hx1.set_reference_unit(referenceUnit)
-#hx2.set_reference_unit(referenceUnit)
+hx2.set_reference_unit(referenceUnit)
 
 hx1.reset()
-#hx2.reset()
+hx2.reset()
 
 print("Scale Startup done.")
 
@@ -60,14 +60,13 @@ webserverthread.start()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
-        val1 = hx1.get_weight(10)
-        print(str(val1))
-        #va2 = hx2.get_weight(5)
+        val1 = hx1.get_weight(5)
+        va2 = hx2.get_weight(5)
 
         hx1.power_down()
         hx1.power_up()
-        #hx2.power_down()
-        #hx2.power_up()
+        hx2.power_down()
+        hx2.power_up()
         time.sleep(0.1)
         
 
