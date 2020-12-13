@@ -11,6 +11,8 @@ referenceUnit = 1
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
+webserveronline = False
+
 def cleanAndExit():
     print("Cleaning...")
         
@@ -58,6 +60,9 @@ webServer = HTTPServer(('', serverPort), MyServer)
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
+        if(webserveronline==False):
+            webserveronline=True
+            webServer.serve_forever()
         val1 = hx1.get_weight(5)
         print(str(val1))
         #va2 = hx2.get_weight(5)
@@ -71,7 +76,6 @@ while True:
 
     except (KeyboardInterrupt, SystemExit):
         cleanAndExit()
-webServer.serve_forever()
 
 
 
