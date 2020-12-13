@@ -58,10 +58,7 @@ class MyServer(BaseHTTPRequestHandler):
 webServer = HTTPServer(('', serverPort), MyServer)
 print("Server started")
 
-try:
-    webServer.serve_forever()
-except KeyboardInterrupt:
-    pass
+webServer.serve_forever()
 
 
 
