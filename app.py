@@ -68,6 +68,8 @@ while True:
         #va2 = hx2.get_weight(5)
 
         hx1.power_down()
+        hx1.power_up()
+        #hx2.power_down()
         #hx2.power_up()
         time.sleep(0.1)
         
