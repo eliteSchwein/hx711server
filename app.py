@@ -61,10 +61,12 @@ print("Setting Scales up!")
 hx1thread = threading.Thread(target=runScale1,args=())
 hx1thread.daemon
 hx1thread.start()
+hx1thread.join()
 
 hx2thread = threading.Thread(target=runScale2,args=())
 hx2thread.daemon
 hx2thread.start()
+hx2thread.join()
 
 print("Scale Startup done.")
 
@@ -81,6 +83,7 @@ webServer = HTTPServer(('', serverPort), MyServer)
 webserverthread = threading.Thread(target=webServer.serve_forever,args=())
 webserverthread.daemon = True
 webserverthread.start()
+webserverthread.join()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
