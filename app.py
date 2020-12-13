@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
    
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
