@@ -24,7 +24,7 @@ app.get('/get.json', function (req, res) {
 });
 
 function retrieveScaleData(){
-	scalevalue1=sensor1.getUnits();
+	scalevalue1=sensor1.getScale();
 	scalevalue2=sensor2.getUnits();
 }
 
