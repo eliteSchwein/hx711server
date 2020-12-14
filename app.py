@@ -24,12 +24,15 @@ def runScale1():
     hx1.reset()
     time.sleep(1)
     while True:
-        val1 = hx1.get_weight(5)
+        try:
+            val1 = hx1.get_weight(5)
 
-        hx1.power_down()
-        hx1.power_up()
-        time.sleep(0.5)
-        print("Scale1: "+str(val1))
+            hx1.power_down()
+            hx1.power_up()
+            time.sleep(0.5)
+            print("Scale1: "+str(val1))
+        except (SystemExit):
+            print("Stop Scale 1")
 
 def runScale2():
     global val2
@@ -40,12 +43,15 @@ def runScale2():
     hx2.reset()
     time.sleep(1)
     while True:
-        val2 = hx2.get_weight(5)
+        try:
+            val2 = hx2.get_weight(5)
 
-        hx2.power_down()
-        hx2.power_up()
-        time.sleep(0.5)
-        print("Scale2: "+str(val2))
+            hx2.power_down()
+            hx2.power_up()
+            time.sleep(0.5)
+            print("Scale2: "+str(val2))
+        except (SystemExit):
+            print("Stop Scale 2")
 
 def cleanAndExit():
     print("Cleaning...")
