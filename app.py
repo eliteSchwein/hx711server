@@ -52,12 +52,11 @@ def runScale2():
         hx2.power_up()
         time.sleep(0.5)
         print("Scale2: "+str(val2))
+        if exit_event.is_set():
+            break
     print("Scale 2 stopped!")
 
 def cleanAndExit():
-    print("Stop Scales.")
-
-    stopThreads=True
 
     time.sleep(2)
     print("Cleaning.")
@@ -103,13 +102,11 @@ webserverthread.daemon = True
 webserverthread.start()
 print("Server started! Port: "+str(serverPort))
 while True:
-    try:
-        print("Heartbeat!")
-        time.sleep(10)
-        
-
-    except (KeyboardInterrupt, SystemExit):
+    print("Heartbeat!")
+    time.sleep(10)
+    if exit_event.is_set():
         cleanAndExit()
+        break
 
 
 
