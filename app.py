@@ -88,7 +88,6 @@ webServer = HTTPServer(('', serverPort), MyServer)
 webserverthread = threading.Thread(target=webServer.serve_forever,args=())
 webserverthread.daemon = True
 webserverthread.start()
-webserverthread.join()
 print("Server started! Port: "+str(serverPort))
 while True:
     try:
