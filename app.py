@@ -20,6 +20,7 @@ stopThreads = False
 def runScale1():
     global val1
     global referenceUnitScale1
+    global stopThreads
     hx1 = HX711(20, 21)
     hx1.set_reading_format("MSB", "MSB")
     hx1.set_reference_unit(referenceUnitScale1)
@@ -39,6 +40,7 @@ def runScale1():
 def runScale2():
     global val2
     global referenceUnitScale2
+    global stopThreads
     hx2 = HX711(19, 26)
     hx2.set_reading_format("MSB", "MSB")
     hx2.set_reference_unit(referenceUnitScale2)
@@ -60,6 +62,7 @@ def cleanAndExit():
 
     stopThreads=True
 
+    time.sleep(2)
     print("Cleaning.")
         
     GPIO.cleanup()
