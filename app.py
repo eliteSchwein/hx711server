@@ -4,6 +4,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 import sys
 import threading
+import signal
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
@@ -15,12 +16,11 @@ serverPort = 8081
 val1 = 0
 val2 = 0
 
-stopThreads = False
+exit_event = threading.Event()
 
 def runScale1():
     global val1
     global referenceUnitScale1
-    global stopThreads
     hx1 = HX711(20, 21)
     hx1.set_reading_format("MSB", "MSB")
     hx1.set_reference_unit(referenceUnitScale1)
@@ -33,15 +33,13 @@ def runScale1():
         hx1.power_up()
         time.sleep(0.5)
         print("Scale1: "+str(val1))
-        print(stopThreads)
-        if (stopThreads==True):
+        if exit_event.is_set():
             print("Scale 1 stopped!")
             break
 
 def runScale2():
     global val2
     global referenceUnitScale2
-    global stopThreads
     hx2 = HX711(19, 26)
     hx2.set_reading_format("MSB", "MSB")
     hx2.set_reference_unit(referenceUnitScale2)
@@ -54,7 +52,7 @@ def runScale2():
         hx2.power_up()
         time.sleep(0.5)
         print("Scale2: "+str(val2))
-        if (stopThreads==True):
+        if exit_event.is_set():
             print("Scale 2 stopped!")
             break
 
@@ -73,11 +71,12 @@ def cleanAndExit():
     print("Bye!")
     sys.exit()
 
-GPIO.cleanup()
-GPIO.setwarnings(False)
-
+def signal_handler(signum, frame):
+    exit_event.set()
 
 print("Setting Scales up!")
+
+signal.signal(signal.SIGINT, signal_handler)
 
 hx1thread = threading.Thread(target=runScale1,args=())
 hx1thread.daemon
