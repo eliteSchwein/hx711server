@@ -33,6 +33,7 @@ def runScale1():
         hx1.power_up()
         time.sleep(0.5)
         print("Scale1: "+str(val1))
+        print(stopThreads)
         if (stopThreads==True):
             print("Scale 1 stopped!")
             break
