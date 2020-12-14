@@ -15,6 +15,8 @@ serverPort = 8081
 val1 = 0
 val2 = 0
 
+stopThreads = false
+
 def runScale1():
     global val1
     global referenceUnitScale1
@@ -24,15 +26,15 @@ def runScale1():
     hx1.reset()
     time.sleep(1)
     while True:
-        try:
-            val1 = hx1.get_weight(5)
+        val1 = hx1.get_weight(5)
 
-            hx1.power_down()
-            hx1.power_up()
-            time.sleep(0.5)
-            print("Scale1: "+str(val1))
-        except (Exception):
-            print("Stop Scale 1")
+        hx1.power_down()
+        hx1.power_up()
+        time.sleep(0.5)
+        print("Scale1: "+str(val1))
+        if (stopThreads==True):
+            print("Scale 1 stopped!")
+            break
 
 def runScale2():
     global val2
@@ -43,18 +45,22 @@ def runScale2():
     hx2.reset()
     time.sleep(1)
     while True:
-        try:
-            val2 = hx2.get_weight(5)
+        val2 = hx2.get_weight(5)
 
-            hx2.power_down()
-            hx2.power_up()
-            time.sleep(0.5)
-            print("Scale2: "+str(val2))
-        except (Exception):
-            print("Stop Scale 2")
+        hx2.power_down()
+        hx2.power_up()
+        time.sleep(0.5)
+        print("Scale2: "+str(val2))
+        if (stopThreads==True):
+            print("Scale 2 stopped!")
+            break
 
 def cleanAndExit():
-    print("Cleaning...")
+    print("Stop Scales.")
+
+    stopThreads=True
+
+    print("Cleaning.")
         
     GPIO.cleanup()
         
