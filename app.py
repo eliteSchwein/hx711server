@@ -52,8 +52,6 @@ def runScale2():
         hx2.power_up()
         time.sleep(0.5)
         print("Scale2: "+str(val2))
-        if exit_event.is_set():
-            break
     print("Scale 2 stopped!")
 
 def cleanAndExit():
