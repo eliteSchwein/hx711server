@@ -8,6 +8,8 @@ import signal
 import RPi.GPIO as GPIO
 from hx711 import HX711
 
+HX711_2 = HX711.__class__
+
 referenceUnitScale1 = 1
 referenceUnitScale2 = 1
 
@@ -40,7 +42,7 @@ def runScale1():
 def runScale2():
     global val2
     global referenceUnitScale2
-    hx2 = HX711(19, 26)
+    hx2 = HX711_2(19, 26)
     hx2.set_reading_format("MSB", "MSB")
     hx2.set_reference_unit(referenceUnitScale2)
     hx2.reset()
