@@ -31,7 +31,7 @@ def runScale1():
             hx1.power_up()
             time.sleep(0.5)
             print("Scale1: "+str(val1))
-        except (KeyboardInterrupt, SystemExit):
+        except (Exception):
             print("Stop Scale 1")
 
 def runScale2():
@@ -50,7 +50,7 @@ def runScale2():
             hx2.power_up()
             time.sleep(0.5)
             print("Scale2: "+str(val2))
-        except (KeyboardInterrupt, SystemExit):
+        except (Exception):
             print("Stop Scale 2")
 
 def cleanAndExit():
