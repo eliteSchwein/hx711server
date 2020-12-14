@@ -34,8 +34,8 @@ def runScale1():
         time.sleep(0.5)
         print("Scale1: "+str(val1))
         if exit_event.is_set():
-            print("Scale 1 stopped!")
             break
+        print("Scale 1 stopped!")
 
 def runScale2():
     global val2
@@ -53,8 +53,8 @@ def runScale2():
         time.sleep(0.5)
         print("Scale2: "+str(val2))
         if exit_event.is_set():
-            print("Scale 2 stopped!")
             break
+        print("Scale 2 stopped!")
 
 def cleanAndExit():
     print("Stop Scales.")
