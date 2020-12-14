@@ -15,7 +15,7 @@ serverPort = 8081
 val1 = 0
 val2 = 0
 
-stopThreads = false
+stopThreads = False
 
 def runScale1():
     global val1
