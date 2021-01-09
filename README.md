@@ -1,7 +1,20 @@
-# hx711server
+# GPIO Layout
 
 The first scale is on GPIO 21,20
 The second scale is on GPIO 26,19
+
+# Installation
+
+npm required
+
+clone the repo
+run npm install
+
+# Startup
+
+npm start
+
+# Access
 
 You can get the values via the rest api
 
