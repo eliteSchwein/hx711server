@@ -5,14 +5,13 @@ The second scale is on GPIO 26,19
 
 # Installation
 
-npm required
+python 3 required
 
 clone the repo
-run npm install
 
 # Startup
 
-npm start
+python3 app.py
 
 # Access
 
